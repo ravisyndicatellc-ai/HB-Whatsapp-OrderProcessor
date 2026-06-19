@@ -260,7 +260,7 @@ async function downloadWhatsAppMedia(mediaId) {
   const WA_TOKEN = process.env.WA_TOKEN;
 
   // Step 1: get the download URL from the media ID
-  const metaRes  = await fetch(`https://graph.facebook.com/v19.0/${mediaId}`, {
+  const metaRes  = await fetch(`https://graph.facebook.com/v20.0/${mediaId}`, {
     headers: { Authorization: `Bearer ${WA_TOKEN}` },
   });
   const metaData = await metaRes.json();
@@ -378,7 +378,7 @@ async function sendWhatsAppMessage(to, text, phoneNumberId) {
   // Fall back to env var if not passed (single-number setup)
   const numId = phoneNumberId || PHONE_NUMBER_ID;
 
-  const url = `https://graph.facebook.com/v19.0/${numId}/messages`;
+  const url = `https://graph.facebook.com/v20.0/${numId}/messages`;
 
   const response = await fetch(url, {
     method: "POST",
